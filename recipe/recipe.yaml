@@ -13,6 +13,7 @@ source:
   sha256: 9764b565e7ab430ab6e9e43cb2816199c2b39926dffc93c212a52f0019278459
   patches:
     - 0001-remove-sqlean-ipaddr-c-from-win.patch
+    - 0002-fix-constans-in-sqlean-time-c.patch
 
 build:
   number: 0
