@@ -20,6 +20,8 @@ build:
   script:
     - if: win
       then:
+        # this file is a glitch not-found HTML file in the source, so I had to
+        # replace it manually -- seems cleaner than a patch
         - copy %RECIPE_DIR%\test_windirent.h sqlite\test_windirent.h
     - python -m pip install . -vv --no-deps --no-build-isolation
 
