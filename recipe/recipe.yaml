@@ -14,7 +14,12 @@ source:
 
 build:
   number: 0
-  script: python -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - if: win
+      then:
+        - copy %RECIPE_DIR%\test_windirent.h sqlite\test_windirent.h
+        - del sqlite\sqlean-ipaddr.c
+    - python -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
