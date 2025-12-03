@@ -11,6 +11,8 @@ package:
 source:
   url: https://pypi.org/packages/source/s/sqlean.py/sqlean_py-${{ version }}.tar.gz
   sha256: 9764b565e7ab430ab6e9e43cb2816199c2b39926dffc93c212a52f0019278459
+  patches:
+    - 0001-remove-sqlean-ipaddr-c-from-win.patch
 
 build:
   number: 0
@@ -18,7 +20,6 @@ build:
     - if: win
       then:
         - copy %RECIPE_DIR%\test_windirent.h sqlite\test_windirent.h
-        - del sqlite\sqlean-ipaddr.c
     - python -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
