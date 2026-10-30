@@ -16,7 +16,7 @@ source:
     - 0002-fix-constans-in-sqlean-time-c.patch
 
 build:
-  number: 1
+  number: 2
   script:
     - if: win
       then:
@@ -45,6 +45,11 @@ tests:
       imports:
         - sqlean
       pip_check: true
+  - files:
+      recipe:
+        - run_test.py
+    script:
+      - python run_test.py
 
 about:
   homepage: https://github.com/nalgeon/sqlean.py
