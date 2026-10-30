@@ -45,6 +45,11 @@ tests:
       imports:
         - sqlean
       pip_check: true
+  - files:
+      recipe:
+        - run_test.py
+    script:
+      - python run_test.py
 
 about:
   homepage: https://github.com/nalgeon/sqlean.py
