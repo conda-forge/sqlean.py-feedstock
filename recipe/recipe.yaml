@@ -11,18 +11,10 @@ package:
 source:
   url: https://pypi.org/packages/source/s/sqlean.py/sqlean_py-${{ version }}.tar.gz
   sha256: 3e5363adbd94c1c8994ff74efda6bbe2094268dc49ea14f04f8e315b3bb9c0e4
-  patches:
-    - 0001-remove-sqlean-ipaddr-c-from-win.patch
-    - 0002-fix-constans-in-sqlean-time-c.patch
 
 build:
   number: 0
   script:
-    - if: win
-      then:
-        # this file is a glitch not-found HTML file in the source, so I had to
-        # replace it manually -- seems cleaner than a patch
-        - copy %RECIPE_DIR%\test_windirent.h sqlite\test_windirent.h
     - python -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
