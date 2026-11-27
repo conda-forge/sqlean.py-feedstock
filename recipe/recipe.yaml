@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: sqlean.py
-  version: "3.50.4.5"
+  version: "3.54.1.0"
 
 package:
   name: ${{ name }}
@@ -10,19 +10,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/s/sqlean.py/sqlean_py-${{ version }}.tar.gz
-  sha256: 9764b565e7ab430ab6e9e43cb2816199c2b39926dffc93c212a52f0019278459
-  patches:
-    - 0001-remove-sqlean-ipaddr-c-from-win.patch
-    - 0002-fix-constans-in-sqlean-time-c.patch
+  sha256: 3e5363adbd94c1c8994ff74efda6bbe2094268dc49ea14f04f8e315b3bb9c0e4
 
 build:
-  number: 2
+  number: 0
   script:
-    - if: win
-      then:
-        # this file is a glitch not-found HTML file in the source, so I had to
-        # replace it manually -- seems cleaner than a patch
-        - copy %RECIPE_DIR%\test_windirent.h sqlite\test_windirent.h
     - python -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
@@ -36,7 +28,7 @@ requirements:
   host:
     - python
     - pip
-    - setuptools
+    - setuptools >=77
   run:
     - python
 
